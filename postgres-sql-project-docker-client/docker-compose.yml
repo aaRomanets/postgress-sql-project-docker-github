@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  api:
+    build: .
+    container_name: postgres-sql-project-client-frontend
+    ports:
+      - '2018:3000'
+    volumes:
+      - .:/app
+    stdin_open: true
+    tty: true

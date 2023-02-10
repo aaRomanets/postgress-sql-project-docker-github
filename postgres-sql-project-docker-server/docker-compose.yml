@@ -1,0 +1,27 @@
+version: '3.8'
+services:  
+  api:
+    build: . 
+    container_name: postgres-sql-project-api
+    ports: 
+      - 4018:3018
+    env_file: .env
+    volumes:     
+      - /app      
+      - /app/node_modules
+    depends_on: 
+      - db
+  db:
+    image: postgres:14.5
+    container_name:  postgres-sql-project-db
+    ports:
+      - "6432:6432"
+    restart: always
+    volumes: 
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: "tutorialDb"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "Recty1981!"
+volumes: 
+  pgdata:
